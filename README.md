@@ -9,7 +9,7 @@
 Use National Center for Biotechnology Information API.
 Warning: This machine-pack is in early development phase, the whole NCBI API has not been yet covered.
 
-## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-ncbi.svg)](http://badge.fury.io/js/machinepack-ncbi) [![Build Status](https://travis-ci.org/mikermcneil/machinepack-ncbi.png?branch=master)](https://travis-ci.org/mikermcneil/machinepack-ncbi)
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-ncbi.svg)](http://badge.fury.io/js/machinepack-ncbi) [![Build Status](https://travis-ci.org/https://travis-ci.org/Tech4Med/machinepack-ncbi/machinepack-ncbi.png?branch=master)](https://travis-ci.org/https://travis-ci.org/Tech4Med/machinepack-ncbi/machinepack-ncbi)
 
 ```sh
 $ npm install machinepack-ncbi
