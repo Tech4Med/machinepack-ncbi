@@ -7,7 +7,7 @@
 ### [Docs](http://node-machine.org/machinepack-ncbi) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
 
 Use National Center for Biotechnology Information API.
-
+Warning: This machine-pack is in early development phase, the whole NCBI API has not been yet covered.
 
 ## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-ncbi.svg)](http://badge.fury.io/js/machinepack-ncbi) [![Build Status](https://travis-ci.org/mikermcneil/machinepack-ncbi.png?branch=master)](https://travis-ci.org/mikermcneil/machinepack-ncbi)
 

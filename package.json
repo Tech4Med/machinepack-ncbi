@@ -10,7 +10,7 @@
     "machines",
     "machinepack"
   ],
-  "author": "",
+  "author": "Tech4Med <info@tech4med.io> (http://tech4med.io)",
   "license": "MIT",
   "dependencies": {
     "machine": "^12.2.5"
@@ -27,5 +27,14 @@
       "get-summary",
       "get-records"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tech4Med/machinepack-ncbi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tech4Med/machinepack-ncbi/issues"
+  },
+  "homepage": "https://github.com/Tech4Med/machinepack-ncbi#readme"
 }
