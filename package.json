@@ -1,6 +1,6 @@
 {
   "name": "machinepack-ncbi",
-  "version": "0.2.1",
+  "version": "0.1.1",
   "description": "Use National Center for Biotechnology Information API.",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
