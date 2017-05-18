@@ -1,0 +1,32 @@
+{
+  "name": "machinepack-ncbi",
+  "version": "0.1.0",
+  "description": "Use National Center for Biotechnology Information API.",
+  "scripts": {
+    "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
+  },
+  "keywords": [
+    "NCBI",
+    "machines",
+    "machinepack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^12.2.5"
+  },
+  "devDependencies": {
+    "test-machinepack-mocha": "^2.1.5"
+  },
+  "machinepack": {
+    "friendlyName": "NCBI",
+    "machineDir": "machines/",
+    "machines": [
+      "say-hello",
+      "get-base-url",
+      "search-articles-uid",
+      "get-summary",
+      "get-records"
+    ]
+  }
+}
