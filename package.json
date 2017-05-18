@@ -22,7 +22,6 @@
     "friendlyName": "NCBI",
     "machineDir": "machines/",
     "machines": [
-      "say-hello",
       "get-base-url",
       "search-articles-uid",
       "get-summary",
