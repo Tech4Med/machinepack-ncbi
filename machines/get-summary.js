@@ -2,7 +2,7 @@ module.exports = {
 
   friendlyName: 'Get summary',
 
-  description: 'Use ESummary NCBI API to return document summaries for a list of UIDs.',
+  description: 'Use ESummary NCBI API to return document summaries for a list of UIDs or for a search query.',
 
   cacheable: true,
 
@@ -15,7 +15,10 @@ module.exports = {
     id: {
       description: 'UID list of documents',
       example: [15718680, 157427902, 119703751],
-      required: true
+    },
+		query: {
+      description: 'The search query',
+      example: 'science[journal]+AND+breast+cancer+AND+2008[pdat]'
     },
     max: {
       description: 'Max results by request (max = 1000)',
@@ -57,47 +60,72 @@ module.exports = {
       start = 0
     }
 
-    Http.sendHttpRequest({
-      baseUrl: Machine.build(require('./get-base-url')).execSync(),
-      method: 'GET',
-      url: '/esummary.fcgi',
-      enctype: 'application/json',
-      qs: {
+		if (_.isUndefined(inputs.id)) {
+      Machine.build(require('./search-articles-uid'))({
+
         db: inputs.db,
-        id: _.join(inputs.id, ','),
-        retmode: 'json',
-        retmax: max,
-        retstart: start
-      }
-    }).exec({
+        query: inputs.query,
+        max: max,
+        start: start
 
-      error: function (err) {
-        return exits.error(err)
-      },
+      }).exec({
 
-      success: function (httpResponse) {
-        var responseBody
-        var result
+        error: function (err) {
+          return exits.error(err)
+        },
 
-        try {
-          responseBody = JSON.parse(httpResponse.body)
-
-          result = _.reduce(responseBody.result, function (memo, doc, key) {
-            if (key === 'uids') {
-              return memo
-            }
-
-            memo.push(doc)
-            return memo
-          }, [])
-        } catch (e) {
-          return exits.error('Unexpected response from NCBI API:\n' + util.inspect(responseBody, false, null) + '\n\nParse error:\n' + util.inspect(e))
+        success: function (res) {
+					id = res.idlist
+          getSummaries(id)
         }
+      })
+    } else {
+			getSummaries (inputs.id)
+		}
+		
+		function getSummaries (id) {
+			Http.sendHttpRequest({
+				baseUrl: Machine.build(require('./get-base-url')).execSync(),
+				method: 'GET',
+				url: '/esummary.fcgi',
+				enctype: 'application/json',
+				qs: {
+					db: inputs.db,
+					id: _.join(id, ','),
+					retmode: 'json',
+					retmax: max,
+					retstart: start
+				}
+			}).exec({
 
-        return exits.success(result)
-      }
+				error: function (err) {
+					return exits.error(err)
+				},
 
-    })
+				success: function (httpResponse) {
+					var responseBody
+					var result
+
+					try {
+						responseBody = JSON.parse(httpResponse.body)
+
+						result = _.reduce(responseBody.result, function (memo, doc, key) {
+							if (key === 'uids') {
+								return memo
+							}
+
+							memo.push(doc)
+							return memo
+						}, [])
+					} catch (e) {
+						return exits.error('Unexpected response from NCBI API:\n' + util.inspect(responseBody, false, null) + '\n\nParse error:\n' + util.inspect(e))
+					}
+
+					return exits.success(result)
+				}
+
+			})
+		}
   }
 
 }
