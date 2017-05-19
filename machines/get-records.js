@@ -97,7 +97,9 @@ module.exports = {
           getRecords(id)
         }
       })
-    }
+    } else {
+			getRecords(inputs.id)
+		}
 
     function getRecords (id) {
       Http.sendHttpRequest({
