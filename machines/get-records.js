@@ -140,7 +140,7 @@ module.exports = {
             })
 
             result = _.reduce(responseBody.PubmedArticleSet.PubmedArticle, function (memo, doc, key) {
-              memo.push(doc.MedlineCitation[0][0])
+							memo.push(doc.MedlineCitation[0])
               return memo
             }, [])
           } catch (e) {
